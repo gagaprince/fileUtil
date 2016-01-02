@@ -38,5 +38,6 @@ public class AppTest
         String filePath = "/Users/gagaprince/work/index/blogIndex";
 //        fileUtil.createFile(filePath);
 //        fileUtil.deleteFile(filePath);
+//        fileUtil.createPathFile(filePath);
     }
 }

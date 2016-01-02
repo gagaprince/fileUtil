@@ -31,6 +31,13 @@ public class FileUtil {
         return pathFile;
     }
 
+    public void createPathFile(String path){
+        File pathFile = new File(path);
+        if(!pathFile.isDirectory()&&!pathFile.exists()){
+            pathFile.mkdirs();
+        }
+    }
+
     public File createFile(String path){
         File pathFile = new File(path);
         return createFile(pathFile);
