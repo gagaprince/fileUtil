@@ -1,6 +1,7 @@
 package com.prince.util.fileutil;
 
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by zidong.wang on 2015/12/15.
@@ -36,7 +37,13 @@ public class FileUtil {
     }
 
     public void deleteFile(File pathFile){
-        if(pathFile.exists()){
+        if(!pathFile.isDirectory()&&pathFile.exists()){
+            pathFile.delete();
+        }else if(pathFile.isDirectory()){
+            File[] files = pathFile.listFiles();
+            for(File f:files){
+                deleteFile(f);
+            }
             pathFile.delete();
         }
     }

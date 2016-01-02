@@ -35,7 +35,7 @@ public class AppTest
     public void testCreateFile()
     {
         FileUtil fileUtil = FileUtil.getInstance();
-        String filePath = "d:/aa/bb/cc/aa.txt";
+        String filePath = "/Users/gagaprince/work/index/blogIndex";
 //        fileUtil.createFile(filePath);
 //        fileUtil.deleteFile(filePath);
     }
