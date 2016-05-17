@@ -63,8 +63,9 @@ public class FileUtil {
 
     public void saveInputStreamInFile(InputStream in ,String path){
         File des = createFile(path);
+        BufferedOutputStream bos = null;
         try {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(des));
+            bos = new BufferedOutputStream(new FileOutputStream(des));
             BufferedInputStream bis = new BufferedInputStream(in);
             byte[] bytes = new byte[1024];
             int len = 0;
@@ -74,6 +75,14 @@ public class FileUtil {
             bos.flush();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            if(bos!=null){
+                try {
+                    bos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -155,5 +164,21 @@ public class FileUtil {
         }
 
         return string.toString();
+    }
+
+    public String String2Unicode(String str){
+        int lenth = str.length();
+        StringBuffer sb = new StringBuffer();
+
+        for(int i=0;i<lenth;i++){
+            int code = str.charAt(i);
+            String s = Integer.toHexString(code);
+            sb.append("\\u");
+            for(int j=s.length();j<4;j++){
+                sb.append(0);
+            }
+            sb.append(s);
+        }
+        return sb.toString();
     }
 }
